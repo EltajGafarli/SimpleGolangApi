@@ -10,7 +10,7 @@ import (
 func NewMySQLDB() (*gorm.DB, error) {
 	var err error
 	var DB *gorm.DB
-	dsn := "root:190407011@tcp(127.0.0.1:3306)/people?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "USER:PASSWORD@tcp(127.0.0.1:3306)/people?charset=utf8mb4&parseTime=True&loc=Local"
 	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Couldn't connect to database")
