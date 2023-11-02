@@ -54,6 +54,7 @@ func (server *ApiServer) Run() {
 
 	router := mux.NewRouter()
 	router.HandleFunc("/account", makeHTTPHandleFunc(server.HandleGetAccounts)).Methods("GET")
+	router.HandleFunc("/account", makeHTTPHandleFunc(server.HandleCreateAccount)).Methods("POST")
 	router.HandleFunc("/account/{id}", makeHTTPHandleFunc(server.HandleGetAccount)).Methods("GET")
 	router.HandleFunc("/account/{id}", makeHTTPHandleFunc(server.HandleDeleteAccount)).Methods("DELETE")
 	router.HandleFunc("/account/{id}", makeHTTPHandleFunc(server.HandleUpdateAccount)).Methods("PUT")

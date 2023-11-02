@@ -1,0 +1,30 @@
+version: "3.1"
+
+services:
+  gobank:
+    container_name: "gobank"
+    build:
+      dockerfile: ./Dockerfile
+    expose:
+      - "3000:3000"
+
+    environment:
+      DB_HOST: app-db
+
+    links:
+      - app-db
+    depends_on:
+      app-db:
+        condition: service_completed_successfully
+#
+  app-db:
+    image: mysql
+    container_name: "gobank-mysql-db"
+    environment:
+      - MYSQL_ROOT_USER=user
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=people
+    expose:
+      - "3306:3306"
+
+
